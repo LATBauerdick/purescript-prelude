@@ -120,6 +120,11 @@ namespace Prelude {
 
   auto unsafeCompareImpl(const any&) -> any;
 
+  //- Bounded --------------------------------------------------------------------
+
+  const char topChar    = 0xFF; // TODO: unicode support
+  const char bottomChar = 0x00;
+
   //- Lattice --------------------------------------------------------------------
 
   inline auto boolOr(const any& x) -> any {
