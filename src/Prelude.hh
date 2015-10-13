@@ -122,6 +122,9 @@ namespace Prelude {
 
   //- Bounded --------------------------------------------------------------------
 
+  const long topInt    = LONG_MAX;
+  const long bottomInt = LONG_MIN;
+
   const char topChar    = 0xFF; // TODO: unicode support
   const char bottomChar = 0x00;
 
