@@ -129,20 +129,20 @@ namespace Prelude {
   //- Show -----------------------------------------------------------------------
 
   auto showCharImpl(const any& c) -> any {
-    string s("'");
+    std::string s("'");
     s.push_back(c.cast<char>());
     s.push_back('\'');
     return s;
   }
 
   auto showStringImpl(const any& s) -> any {
-    return '"' + s.cast<string>() + '"';
+    return std::string("\"") + s.cast<string>() + '"';
   }
 
   auto showArrayImpl(const any& f) -> any {
     return [=](const any& xs_) -> any {
       const auto& xs = xs_.cast<any::vector>();
-      string s("[");
+      std::string s("[");
       auto count = xs.size();
       for (auto it = xs.begin(); it != xs.end(); ++it) {
         s.append(f(*it));
