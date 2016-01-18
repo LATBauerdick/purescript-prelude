@@ -145,7 +145,7 @@ namespace Prelude {
       std::string s("[");
       auto count = xs.size();
       for (auto it = xs.begin(); it != xs.end(); ++it) {
-        s.append(f(*it));
+        s.append(f(*it).cast<string>());
         if (--count > 0) {
           s.push_back(',');
         }
