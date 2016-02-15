@@ -22,10 +22,10 @@ namespace Prelude {
 
   auto arrayMap(const any& f) -> any {
     return [=](const any& a) -> any {
-      const auto& as = a.cast<any::array>();
-      any::array bs;
-      for (auto it = as.cbegin(), end = as.cend(); it != end; it++) {
-          bs.emplace_back(f(*it));
+      const any::vector& as = a;
+      any::vector bs;
+      for (auto it = as.begin(); it != as.end(); ++it) {
+          bs.push_back(f(*it));
       }
       return bs;
     };
@@ -35,16 +35,14 @@ namespace Prelude {
 
   auto arrayBind(const any& a) -> any {
     return [=](const any& f) -> any {
-      const auto& as = a.cast<any::array>();
-      any::array result;
-      for (auto it = as.cbegin(), end = as.cend(); it != end; it++) {
+      const auto& as = a.cast<any::vector>();
+      any::vector bs;
+      for (auto it = as.begin(); it != as.end(); ++it) {
         auto xs_ = f(*it);
-        const auto& xs = xs_.cast<any::array>();
-        for (auto iit = xs.begin(), iend = xs.end(); iit != iend; iit++) {
-          result.emplace_back(std::move(*iit));
-        }
+        const auto& xs = xs_.cast<any::vector>();
+        bs.insert(bs.end(), xs.begin(), xs.end());
       }
-      return result;
+      return bs;
     };
   }
 
@@ -52,10 +50,10 @@ namespace Prelude {
 
   auto concatArray(const any& a) -> any {
     return [=](const any& b) -> any {
-      any::array result(a.cast<any::array>()); // makes a copy
-      const auto& bs = b.cast<any::array>();
-      result.insert(result.end(), bs.cbegin(), bs.cend());
-      return result;
+      any::vector xs(a.cast<any::vector>()); // makes a copy
+      const auto& ys = b.cast<any::vector>();
+      xs.insert(xs.end(), ys.begin(), ys.end());
+      return xs;
     };
   }
 
@@ -64,17 +62,15 @@ namespace Prelude {
   auto eqArrayImpl(const any& f) -> any {
     return [=](const any& xs_) -> any {
       return [=](const any& ys_) -> any {
-        const auto& xs = xs_.cast<any::array>();
-        const auto& ys = ys_.cast<any::array>();
+        const auto& xs = xs_.cast<any::vector>();
+        const auto& ys = ys_.cast<any::vector>();
         const auto xs_size = xs.size();
         if (xs_size != ys.size()) {
           return false;
         }
-        auto itx = xs.cbegin();
-        auto ity = ys.cbegin();
-        for (auto i = 0; i < xs_size; i++) {
-          auto res = f(*itx++)(*ity++);
-          if (not res.cast<bool>()) {
+        for (any::vector::size_type i = 0; i < xs_size; i++) {
+          const auto res = f(xs[i])(ys[i]);
+          if (!res.cast<bool>()) {
             return false;
           }
         }
@@ -86,19 +82,19 @@ namespace Prelude {
   auto ordArrayImpl(const any& f) -> any {
     return [=](const any& xs_) -> any {
       return [=](const any& ys_) -> any {
-        const auto& xs = xs_.cast<any::array>();
-        const auto& ys = ys_.cast<any::array>();
+        const auto& xs = xs_.cast<any::vector>();
+        const auto& ys = ys_.cast<any::vector>();
+        any::vector::size_type i = 0;
         const auto xlen = xs.size();
         const auto ylen = ys.size();
-        auto itx = xs.cbegin();
-        auto ity = ys.cbegin();
-        for (auto i = 0; i < xlen and i < ylen; i++) {
-          auto x = *itx++;
-          auto y = *ity++;
-          auto o = f(x)(y);
+        while (i < xlen && i < ylen) {
+          const auto x = xs[i];
+          const auto y = ys[i];
+          const auto o = f(x)(y);
           if (o != 0L) {
             return o;
           }
+          i++;
         }
         if (xlen == ylen) {
           return 0;
@@ -145,10 +141,10 @@ namespace Prelude {
 
   auto showArrayImpl(const any& f) -> any {
     return [=](const any& xs_) -> any {
-      const auto& xs = xs_.cast<any::array>();
+      const auto& xs = xs_.cast<any::vector>();
       std::string s("[");
       auto count = xs.size();
-      for (auto it = xs.cbegin(), end = xs.cend(); it != end; it++) {
+      for (auto it = xs.begin(); it != xs.end(); ++it) {
         s.append(f(*it).cast<string>());
         if (--count > 0) {
           s.push_back(',');
