@@ -22,103 +22,83 @@ namespace Prelude {
 
   //- Functor --------------------------------------------------------------------
 
-  auto arrayMap(const any&) -> any;
+  auto $arrayMap(const any& f, const any::array& as) -> any::array;
 
   //- Bind -----------------------------------------------------------------------
 
-  auto arrayBind(const any&) -> any;
+  auto $arrayBind(const any::array& as, const any& f) -> any::array;
 
   //- Monoid ---------------------------------------------------------------------
 
-  inline auto concatString(const any& s1) -> any {
-    return [=](const any& s2) -> any {
-      return s1 + s2;
-    };
+  inline auto $concatString(const any& s1, const any& s2) -> any {
+    return s1 + s2;
   }
 
-  auto concatArray(const any&) -> any;
+  auto $concatArray(const any::array& as, const any::array& bs) -> any::array;
 
   //- Semiring -------------------------------------------------------------------
 
-  inline auto intAdd(const any& x) -> any {
-    return [=](const any& y) -> any {
-      return x + y;
-    };
+  inline auto $intAdd(const long x, const long y) -> long {
+    return x + y;
   }
 
-  inline auto intMul(const any& x) -> any {
-    return [=](const any& y) -> any {
-      return x * y;
-    };
+  inline auto $intMul(const long x, const long y) -> long {
+    return x * y;
   }
 
-  inline auto numAdd(const any& x) -> any {
-    return [=](const any& y) -> any {
-      return x + y;
-    };
+  inline auto $numAdd(const double x, const double y) -> double {
+    return x + y;
   }
 
-  inline auto numMul(const any& x) -> any {
-    return [=](const any& y) -> any {
-      return x * y;
-    };
+  inline auto $numMul(const double x, const double y) -> double {
+    return x * y;
   }
 
   //- ModuloSemiring -------------------------------------------------------------
 
-  inline auto intDiv(const any& x) -> any {
-    return [=](const any& y) -> any {
-      return x / y;
-    };
+  inline auto $intDiv(const long x, const long y) -> long {
+    return x / y;
   }
 
-  inline auto intMod(const any& x) -> any {
-    return [=](const any& y) -> any {
-      return x % y;
-    };
+  inline auto $intMod(const long x, const long y) -> long {
+    return x % y;
   }
 
-  inline auto numDiv(const any& x) -> any {
-    return [=](const any& y) -> any {
-      return x / y;
-    };
+  inline auto $numDiv(const double x, const double y) -> double {
+    return x / y;
   }
 
   //- Ring -----------------------------------------------------------------------
 
-  inline auto intSub(const any& x) -> any {
-    return [=](const any& y) -> any {
-      return x - y;
-    };
+  inline auto $intSub(const long x, const long y) -> long {
+    return x - y;
   }
 
-  inline auto numSub(const any& x) -> any {
-    return [=](const any& y) -> any {
-      return x - y;
-    };
+  inline auto $numSub(const double x, const double y) -> double {
+    return x - y;
   }
 
   //- Eq -------------------------------------------------------------------------
 
-  inline auto refEq(const any& ref1) -> any {
-    return [=](const any& ref2) -> any {
-      return ref1 == ref2;
-    };
+  inline auto $refEq(const any& ref1, const any& ref2) -> any {
+    return ref1 == ref2;
   }
 
-  inline auto refIneq(const any& ref1) -> any {
-    return [=](const any& ref2) -> any {
-      return ref1 != ref2;
-    };
+  inline auto $refIneq(const any& ref1, const any& ref2) -> any {
+    return ref1 != ref2;
   }
 
-  auto eqArrayImpl(const any&) -> any;
+  auto $eqArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> bool;
 
-  auto ordArrayImpl(const any&) -> any;
+  auto $ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> long;
 
   //- Ord ------------------------------------------------------------------------
 
-  auto unsafeCompareImpl(const any&) -> any;
+  auto $unsafeCompareImpl(const any& lt,
+                          const any& eq,
+                          const any& gt,
+                          const any& x,
+                          const any& y) -> any;
 
   //- Bounded --------------------------------------------------------------------
 
@@ -130,16 +110,12 @@ namespace Prelude {
 
   //- Lattice --------------------------------------------------------------------
 
-  inline auto boolOr(const any& x) -> any {
-    return [=](const any& y) -> any {
-      return x.cast<bool>() || y.cast<bool>();
-    };
+  inline auto $boolOr(const bool x, const bool y) -> bool {
+    return x || y;
   }
 
-  inline auto boolAnd(const any& x) -> any {
-    return [=](const any& y) -> any {
-      return x.cast<bool>() && y.cast<bool>();
-    };
+  inline auto $boolAnd(const bool x, const bool y) -> bool {
+    return x && y;
   }
 
   //- ComplementedLattice --------------------------------------------------------
@@ -162,7 +138,7 @@ namespace Prelude {
 
   auto showStringImpl(const any& s) -> any;
 
-  auto showArrayImpl(const any& f) -> any;
+  auto $showArrayImpl(const any& f, const any::array& xs) -> any;
 
 }
 
