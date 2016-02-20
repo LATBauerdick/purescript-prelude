@@ -20,7 +20,7 @@ namespace Prelude {
 
   //- Functor --------------------------------------------------------------------
 
-  auto $arrayMap(const any& f, const any::array& as) -> any::array {
+  auto arrayMap(const any& f, const any::array& as) -> any::array {
     any::array bs;
     for (auto it = as.cbegin(), end = as.cend(); it != end; it++) {
         bs.emplace_back(f(*it));
@@ -30,7 +30,7 @@ namespace Prelude {
 
   //- Bind -----------------------------------------------------------------------
 
-  auto $arrayBind(const any::array& as, const any& f) -> any::array {
+  auto arrayBind(const any::array& as, const any& f) -> any::array {
     any::array result;
     for (auto it = as.cbegin(), end = as.cend(); it != end; it++) {
       auto xs_ = f(*it);
@@ -44,7 +44,7 @@ namespace Prelude {
 
   //- Monoid ---------------------------------------------------------------------
 
-  auto $concatArray(const any::array& as, const any::array& bs) -> any::array {
+  auto concatArray(const any::array& as, const any::array& bs) -> any::array {
     any::array result(as); // makes a copy
     result.insert(result.end(), bs.cbegin(), bs.cend());
     return result;
@@ -52,7 +52,7 @@ namespace Prelude {
 
   //- Eq -------------------------------------------------------------------------
 
-  auto $eqArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> bool {
+  auto eqArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> bool {
     const auto xs_size = xs.size();
     if (xs_size != ys.size()) {
       return false;
@@ -68,7 +68,7 @@ namespace Prelude {
     return true;
   }
 
-  auto $ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> long {
+  auto ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> long {
     const auto xlen = xs.size();
     const auto ylen = ys.size();
     auto itx = xs.cbegin();
@@ -92,7 +92,7 @@ namespace Prelude {
 
   //- Ord ------------------------------------------------------------------------
 
-  auto $unsafeCompareImpl(const any& lt,
+  auto unsafeCompareImpl(const any& lt,
                           const any& eq,
                           const any& gt,
                           const any& x,
@@ -118,7 +118,7 @@ namespace Prelude {
     return std::string("\"") + s.cast<string>() + '"';
   }
 
-  auto $showArrayImpl(const any& f, const any::array& xs) -> any {
+  auto showArrayImpl(const any& f, const any::array& xs) -> any {
     std::string s("[");
     auto count = xs.size();
     for (auto it = xs.cbegin(), end = xs.cend(); it != end; it++) {

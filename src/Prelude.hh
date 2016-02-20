@@ -22,79 +22,79 @@ namespace Prelude {
 
   //- Functor --------------------------------------------------------------------
 
-  auto $arrayMap(const any& f, const any::array& as) -> any::array;
+  auto arrayMap(const any& f, const any::array& as) -> any::array;
 
   //- Bind -----------------------------------------------------------------------
 
-  auto $arrayBind(const any::array& as, const any& f) -> any::array;
+  auto arrayBind(const any::array& as, const any& f) -> any::array;
 
   //- Monoid ---------------------------------------------------------------------
 
-  inline auto $concatString(const any& s1, const any& s2) -> any {
+  inline auto concatString(const any& s1, const any& s2) -> any {
     return s1 + s2;
   }
 
-  auto $concatArray(const any::array& as, const any::array& bs) -> any::array;
+  auto concatArray(const any::array& as, const any::array& bs) -> any::array;
 
   //- Semiring -------------------------------------------------------------------
 
-  inline auto $intAdd(const long x, const long y) -> long {
+  inline auto intAdd(const long x, const long y) -> long {
     return x + y;
   }
 
-  inline auto $intMul(const long x, const long y) -> long {
+  inline auto intMul(const long x, const long y) -> long {
     return x * y;
   }
 
-  inline auto $numAdd(const double x, const double y) -> double {
+  inline auto numAdd(const double x, const double y) -> double {
     return x + y;
   }
 
-  inline auto $numMul(const double x, const double y) -> double {
+  inline auto numMul(const double x, const double y) -> double {
     return x * y;
   }
 
   //- ModuloSemiring -------------------------------------------------------------
 
-  inline auto $intDiv(const long x, const long y) -> long {
+  inline auto intDiv(const long x, const long y) -> long {
     return x / y;
   }
 
-  inline auto $intMod(const long x, const long y) -> long {
+  inline auto intMod(const long x, const long y) -> long {
     return x % y;
   }
 
-  inline auto $numDiv(const double x, const double y) -> double {
+  inline auto numDiv(const double x, const double y) -> double {
     return x / y;
   }
 
   //- Ring -----------------------------------------------------------------------
 
-  inline auto $intSub(const long x, const long y) -> long {
+  inline auto intSub(const long x, const long y) -> long {
     return x - y;
   }
 
-  inline auto $numSub(const double x, const double y) -> double {
+  inline auto numSub(const double x, const double y) -> double {
     return x - y;
   }
 
   //- Eq -------------------------------------------------------------------------
 
-  inline auto $refEq(const any& ref1, const any& ref2) -> any {
+  inline auto refEq(const any& ref1, const any& ref2) -> any {
     return ref1 == ref2;
   }
 
-  inline auto $refIneq(const any& ref1, const any& ref2) -> any {
+  inline auto refIneq(const any& ref1, const any& ref2) -> any {
     return ref1 != ref2;
   }
 
-  auto $eqArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> bool;
+  auto eqArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> bool;
 
-  auto $ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> long;
+  auto ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> long;
 
   //- Ord ------------------------------------------------------------------------
 
-  auto $unsafeCompareImpl(const any& lt,
+  auto unsafeCompareImpl(const any& lt,
                           const any& eq,
                           const any& gt,
                           const any& x,
@@ -110,11 +110,11 @@ namespace Prelude {
 
   //- Lattice --------------------------------------------------------------------
 
-  inline auto $boolOr(const bool x, const bool y) -> bool {
+  inline auto boolOr(const bool x, const bool y) -> bool {
     return x || y;
   }
 
-  inline auto $boolAnd(const bool x, const bool y) -> bool {
+  inline auto boolAnd(const bool x, const bool y) -> bool {
     return x && y;
   }
 
@@ -138,7 +138,7 @@ namespace Prelude {
 
   auto showStringImpl(const any& s) -> any;
 
-  auto $showArrayImpl(const any& f, const any::array& xs) -> any;
+  auto showArrayImpl(const any& f, const any::array& xs) -> any;
 
 }
 
