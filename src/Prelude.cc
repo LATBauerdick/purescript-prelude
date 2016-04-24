@@ -77,7 +77,7 @@ namespace Prelude {
       auto x = *itx++;
       auto y = *ity++;
       auto o = f(x)(y);
-      if (o != 0L) {
+      if (o != 0) {
         return o;
       }
     }
