@@ -121,17 +121,17 @@ namespace Prelude {
   //- ComplementedLattice --------------------------------------------------------
 
   inline auto boolNot(const any& x) -> any {
-    return !x.cast<bool>();
+    return (not cast<bool>(x));
   }
 
   //- Show -----------------------------------------------------------------------
 
   inline auto showIntImpl(const any& x) -> any {
-    return std::to_string(x.cast<long>());
+    return std::to_string((long)x);
   }
 
   inline auto showNumberImpl(const any& x) -> any {
-    return std::to_string(x.cast<double>());
+    return std::to_string((double)x);
   }
 
   auto showCharImpl(const any&) -> any;

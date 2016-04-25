@@ -34,7 +34,7 @@ namespace Prelude {
     any::array result;
     for (auto it = as.cbegin(), end = as.cend(); it != end; it++) {
       auto xs_ = f(*it);
-      const auto& xs = xs_.cast<any::array>();
+      const any::array& xs = xs_;
       for (auto iit = xs.begin(), iend = xs.end(); iit != iend; iit++) {
         result.emplace_back(std::move(*iit));
       }
@@ -61,7 +61,7 @@ namespace Prelude {
     auto ity = ys.cbegin();
     for (auto i = 0; i < xs_size; i++) {
       auto res = f(*itx++)(*ity++);
-      if (not res.cast<bool>()) {
+      if (not cast<bool>(res)) {
         return false;
       }
     }
@@ -109,20 +109,20 @@ namespace Prelude {
 
   auto showCharImpl(const any& c) -> any {
     std::string s("'");
-    s.push_back(c.cast<char>());
+    s.push_back(c);
     s.push_back('\'');
     return s;
   }
 
   auto showStringImpl(const any& s) -> any {
-    return std::string("\"") + s.cast<string>() + '"';
+    return std::string("\"") + cast<cstring>(s) + '"';
   }
 
   auto showArrayImpl(const any& f, const any::array& xs) -> any {
     std::string s("[");
     auto count = xs.size();
     for (auto it = xs.cbegin(), end = xs.cend(); it != end; it++) {
-      s.append(f(*it).cast<string>());
+      s.append(cast<cstring>(f(*it)));
       if (--count > 0) {
         s.push_back(',');
       }
