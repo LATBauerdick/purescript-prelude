@@ -68,7 +68,7 @@ namespace Prelude {
     return true;
   }
 
-  auto ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> long {
+  auto ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> integer {
     const auto xlen = xs.size();
     const auto ylen = ys.size();
     auto itx = xs.cbegin();
@@ -102,8 +102,8 @@ namespace Prelude {
 
   //- Bounded --------------------------------------------------------------------
 
-  const long topInt    = LONG_MAX;
-  const long bottomInt = LONG_MIN;
+  const integer topInt    = INTEGER_MAX;
+  const integer bottomInt = INTEGER_MIN;
 
   //- Show -----------------------------------------------------------------------
 

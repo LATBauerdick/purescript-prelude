@@ -38,11 +38,11 @@ namespace Prelude {
 
   //- Semiring -------------------------------------------------------------------
 
-  inline auto intAdd(const long x, const long y) -> long {
+  inline auto intAdd(const integer x, const integer y) -> integer {
     return x + y;
   }
 
-  inline auto intMul(const long x, const long y) -> long {
+  inline auto intMul(const integer x, const integer y) -> integer {
     return x * y;
   }
 
@@ -56,11 +56,11 @@ namespace Prelude {
 
   //- ModuloSemiring -------------------------------------------------------------
 
-  inline auto intDiv(const long x, const long y) -> long {
+  inline auto intDiv(const integer x, const integer y) -> integer {
     return x / y;
   }
 
-  inline auto intMod(const long x, const long y) -> long {
+  inline auto intMod(const integer x, const integer y) -> integer {
     return x % y;
   }
 
@@ -70,7 +70,7 @@ namespace Prelude {
 
   //- Ring -----------------------------------------------------------------------
 
-  inline auto intSub(const long x, const long y) -> long {
+  inline auto intSub(const integer x, const integer y) -> integer {
     return x - y;
   }
 
@@ -90,7 +90,7 @@ namespace Prelude {
 
   auto eqArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> bool;
 
-  auto ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> long;
+  auto ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> integer;
 
   //- Ord ------------------------------------------------------------------------
 
@@ -102,8 +102,8 @@ namespace Prelude {
 
   //- Bounded --------------------------------------------------------------------
 
-  extern const long topInt;
-  extern const long bottomInt;
+  extern const integer topInt;
+  extern const integer bottomInt;
 
   const char topChar    = 0xFF; // TODO: unicode support
   const char bottomChar = 0x00;
@@ -127,7 +127,7 @@ namespace Prelude {
   //- Show -----------------------------------------------------------------------
 
   inline auto showIntImpl(const any& x) -> any {
-    return std::to_string((long)x);
+    return std::to_string((integer)x);
   }
 
   inline auto showNumberImpl(const any& x) -> any {
