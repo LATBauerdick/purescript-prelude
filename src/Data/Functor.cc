@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Module      :  Prelude.hh
+// Module      :  Functor.cc
 // Copyright   :  (c) Andy Arvanitis 2015
 // License     :  MIT
 //
@@ -8,17 +8,21 @@
 // Stability   :  experimental
 // Portability :
 //
-// Prelude FFI functions
+// Functor FFI functions
 //
 ///////////////////////////////////////////////////////////////////////////////
 //
-#ifndef Prelude_FFI_HH
-#define Prelude_FFI_HH
+#include "Functor.hh"
 
-#include "PureScript/PureScript.hh"
-
-namespace Prelude {
+namespace Data_Functor {
   using namespace PureScript;
-}
 
-#endif // Prelude_FFI_HH
+  auto arrayMap(const any& f, const any::array& xs) -> any::array {
+    any::array bs;
+    for (auto it = xs.cbegin(), end = xs.cend(); it != end; it++) {
+        bs.emplace_back(f(*it));
+    }
+    return bs;
+  }
+
+}

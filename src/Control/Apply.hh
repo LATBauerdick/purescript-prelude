@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Module      :  Prelude.hh
+// Module      :  Apply.hh
 // Copyright   :  (c) Andy Arvanitis 2015
 // License     :  MIT
 //
@@ -12,13 +12,18 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 //
-#ifndef Prelude_FFI_HH
-#define Prelude_FFI_HH
+#ifndef Control_Apply_FFI_HH
+#define Control_Apply_FFI_HH
 
 #include "PureScript/PureScript.hh"
 
-namespace Prelude {
-  using namespace PureScript;
+namespace Control_Apply {
+  using namespace PureScript;	
+
+  // foreign import arrayApply :: forall a b. Array (a -> b) -> Array a -> Array b
+  //
+  auto arrayApply(const any::array& fs, const any::array& xs) -> any::array;
+
 }
 
-#endif // Prelude_FFI_HH
+#endif // Control_Apply_FFI_HH

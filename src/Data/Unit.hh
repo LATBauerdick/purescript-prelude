@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Module      :  Prelude.hh
-// Copyright   :  (c) Andy Arvanitis 2015
+// Module      :  Unit.hh
+// Copyright   :  (c) Andy Arvanitis 2015, 2016
 // License     :  MIT
 //
 // Maintainer  :  Andy Arvanitis <andy.arvanitis@gmail.com>
@@ -12,13 +12,15 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 //
-#ifndef Prelude_FFI_HH
-#define Prelude_FFI_HH
+#ifndef Data_Unit_FFI_HH
+#define Data_Unit_FFI_HH
 
 #include "PureScript/PureScript.hh"
 
-namespace Prelude {
-  using namespace PureScript;
+namespace Data_Unit {
+  using namespace PureScript;	
+  
+  const nullptr_t unit = nullptr;
 }
 
-#endif // Prelude_FFI_HH
+#endif // Data_Unit_FFI_HH

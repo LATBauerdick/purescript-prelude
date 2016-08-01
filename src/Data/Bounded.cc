@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// Module      :  Prelude.hh
+// Module      :  Bounded.cc
 // Copyright   :  (c) Andy Arvanitis 2015
 // License     :  MIT
 //
@@ -8,17 +8,17 @@
 // Stability   :  experimental
 // Portability :
 //
-// Prelude FFI functions
+// Bounded FFI functions
 //
 ///////////////////////////////////////////////////////////////////////////////
 //
-#ifndef Prelude_FFI_HH
-#define Prelude_FFI_HH
+#include <climits>
+#include "Bounded.hh"
 
-#include "PureScript/PureScript.hh"
-
-namespace Prelude {
+namespace Data_Bounded {
   using namespace PureScript;
-}
 
-#endif // Prelude_FFI_HH
+  const integer topInt    = INTEGER_MAX;
+  const integer bottomInt = INTEGER_MIN;
+
+}
