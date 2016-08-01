@@ -22,23 +22,23 @@ namespace Data_Show {
 
   // foreign import showIntImpl :: Int -> String
   //
-  inline auto showIntImpl(const integer n) -> any {
-    return std::to_string(n);
+  inline auto showIntImpl(const any& x) -> any {
+    return std::to_string((integer)x);
   }
 
   // foreign import showNumberImpl :: Number -> String
   //
-  inline auto showNumberImpl(const double n) -> any {
-    return std::to_string(n);
+  inline auto showNumberImpl(const any& x) -> any {
+    return std::to_string((double)x);
   }
 
   // foreign import showCharImpl :: Char -> String
   //
-  auto showCharImpl(const char c) -> any;
+  auto showCharImpl(const any& c) -> any;
 
   // foreign import showStringImpl :: String -> String
   //
-  auto showStringImpl(const cstring s) -> any;
+  auto showStringImpl(const any& s) -> any;
 
   // foreign import showArrayImpl :: forall a. (a -> String) -> Array a -> String
   //

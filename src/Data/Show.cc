@@ -17,15 +17,15 @@
 namespace Data_Show {
   using namespace PureScript;
 
-  auto showCharImpl(const char c) -> any {
+  auto showCharImpl(const any& c) -> any {
     std::string s("'");
     s.push_back(c);
     s.push_back('\'');
     return s;
   }
 
-  auto showStringImpl(const cstring s) -> any {
-    return std::string("\"") + s + '"';
+  auto showStringImpl(const any& s) -> any {
+    return std::string("\"") + cast<cstring>(s) + '"';
   }
 
   auto showArrayImpl(const any& f, const any::array& xs) -> any {
