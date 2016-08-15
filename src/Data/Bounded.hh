@@ -20,8 +20,8 @@
 namespace Data_Bounded {
   using namespace PureScript;	
 
-  extern const integer topInt;
-  extern const integer bottomInt;
+  extern const int topInt;
+  extern const int bottomInt;
 
   const char topChar    = 0xFF; // TODO: unicode support
   const char bottomChar = 0x00;  

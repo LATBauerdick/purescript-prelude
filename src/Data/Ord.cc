@@ -17,7 +17,7 @@
 namespace Data_Ord {
   using namespace PureScript;
 
-  auto ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> integer {
+  auto ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> int {
     const auto xlen = xs.size();
     const auto ylen = ys.size();
     auto itx = xs.cbegin();

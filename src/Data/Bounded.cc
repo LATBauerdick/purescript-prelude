@@ -18,7 +18,7 @@
 namespace Data_Bounded {
   using namespace PureScript;
 
-  const integer topInt    = INTEGER_MAX;
-  const integer bottomInt = INTEGER_MIN;
+  const int topInt    = INT_MAX;
+  const int bottomInt = INT_MIN;
 
 }

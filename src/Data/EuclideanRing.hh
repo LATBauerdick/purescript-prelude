@@ -28,13 +28,13 @@ namespace Data_EuclideanRing {
 
   // foreign import intDiv :: Int -> Int -> Int
   //
-  inline auto intDiv(const integer x, const integer y) -> integer {
+  inline auto intDiv(const int x, const int y) -> int {
     return x / y;
   }
 
   // foreign import intMod :: Int -> Int -> Int
   //
-  inline auto intMod(const integer x, const integer y) -> integer {
+  inline auto intMod(const int x, const int y) -> int {
     return x % y;
   }
 

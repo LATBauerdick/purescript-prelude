@@ -22,7 +22,7 @@ namespace Data_Ring {
 
   // foreign import intSub :: Int -> Int -> Int
   //
-  inline auto intSub(const integer x, const integer y) -> integer {
+  inline auto intSub(const int x, const int y) -> int {
     return x - y;
   }
 

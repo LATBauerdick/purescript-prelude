@@ -22,13 +22,13 @@ namespace Data_Semiring {
 
   // foreign import intAdd :: Int -> Int -> Int
   //
-  inline auto intAdd(const integer x, const integer y) -> integer {
+  inline auto intAdd(const int x, const int y) -> int {
     return x + y;
   }
 
   // foreign import intMul :: Int -> Int -> Int
   //
-  inline auto intMul(const integer x, const integer y) -> integer {
+  inline auto intMul(const int x, const int y) -> int {
     return x * y;
   }
 

@@ -22,7 +22,7 @@ namespace Data_Ord {
 
   // foreign import ordArrayImpl :: forall a. (a -> a -> Int) -> Array a -> Array a -> Int
   //
-  auto ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> integer;
+  auto ordArrayImpl(const any& f, const any::array& xs, const any::array& ys) -> int;
 
 }
 

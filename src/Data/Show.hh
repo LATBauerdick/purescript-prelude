@@ -23,7 +23,7 @@ namespace Data_Show {
   // foreign import showIntImpl :: Int -> String
   //
   inline auto showIntImpl(const any& x) -> any {
-    return std::to_string((integer)x);
+    return std::to_string((int)x);
   }
 
   // foreign import showNumberImpl :: Number -> String
