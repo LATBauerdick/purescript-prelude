@@ -24,7 +24,7 @@ namespace Data_Eq {
     }
     auto itx = xs.cbegin();
     auto ity = ys.cbegin();
-    for (auto i = 0; i < xs_size; i++) {
+    for (any::array::size_type i = 0; i < xs_size; i++) {
       auto res = f(*itx++)(*ity++);
       if (not cast<bool>(res)) {
         return false;

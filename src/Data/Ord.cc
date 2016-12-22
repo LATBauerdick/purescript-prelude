@@ -22,7 +22,7 @@ namespace Data_Ord {
     const auto ylen = ys.size();
     auto itx = xs.cbegin();
     auto ity = ys.cbegin();
-    for (auto i = 0; i < xlen and i < ylen; i++) {
+    for (any::array::size_type i = 0; i < xlen and i < ylen; i++) {
       auto x = *itx++;
       auto y = *ity++;
       auto o = f(x)(y);
