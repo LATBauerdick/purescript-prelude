@@ -23,8 +23,8 @@ namespace Data_Bounded {
   extern const int topInt;
   extern const int bottomInt;
 
-  const char topChar    = 0xFF; // TODO: unicode support
-  const char bottomChar = 0x00;  
+  extern const char32_t topChar;
+  extern const char32_t bottomChar;
 }
 
 #endif // Data_Bounded_FFI_HH
