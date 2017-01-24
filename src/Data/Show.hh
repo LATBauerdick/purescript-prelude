@@ -34,7 +34,7 @@ namespace Data_Show {
 
   // foreign import showCharImpl :: Char -> String
   //
-  auto showCharImpl(const any& c) -> any;
+  auto showCharImpl(const char32_t c) -> any;
 
   // foreign import showStringImpl :: String -> String
   //

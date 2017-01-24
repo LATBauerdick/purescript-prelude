@@ -12,14 +12,21 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 //
+#include <locale>
+#include <codecvt>
 #include "Show.hh"
 
 namespace Data_Show {
   using namespace PureScript;
 
-  auto showCharImpl(const any& c) -> any {
+  auto showCharImpl(const char32_t c) -> any {
     std::string s("'");
-    s.push_back(c);
+    if (c < 128) {
+      s.push_back(c);
+    } else {
+      static std::wstring_convert<std::codecvt_utf8<char32_t>, char32_t> utf32conv;
+      s += utf32conv.to_bytes(c);
+    }
     s.push_back('\'');
     return s;
   }
