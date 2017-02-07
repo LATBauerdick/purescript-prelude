@@ -7,7 +7,7 @@ module Data.Field
   ) where
 
 import Data.CommutativeRing (class CommutativeRing)
-import Data.EuclideanRing (class EuclideanRing, degree, div, mod, (/))
+import Data.EuclideanRing (class EuclideanRing, degree, div, mod, (/), gcd, lcm)
 import Data.Ring (class Ring, negate, sub)
 import Data.Semiring (class Semiring, add, mul, one, zero, (*), (+))
 import Data.Unit (Unit)
@@ -17,7 +17,11 @@ import Data.Unit (Unit)
 -- | Instances must satisfy the following law in addition to the
 -- | `EuclideanRing` laws:
 -- |
--- | - Non-zero multiplicative inverse: ``a `mod` b = 0` for all `a` and `b` ``
+-- | - Non-zero multiplicative inverse: ``a `mod` b = zero`` for all `a` and `b`
+-- |
+-- | The `Unit` instance is provided for backwards compatibility, but it is
+-- | not law-abiding, because `Unit` does not obey the `EuclideanRing` laws.
+-- | This instance will be removed in a future release.
 class EuclideanRing a <= Field a
 
 instance fieldNumber :: Field Number
