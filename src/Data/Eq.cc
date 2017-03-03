@@ -26,7 +26,7 @@ namespace Data_Eq {
     auto ity = ys.cbegin();
     for (any::array::size_type i = 0; i < xs_size; i++) {
       auto res = f(*itx++)(*ity++);
-      if (not cast<bool>(res)) {
+      if (not static_cast<bool>(res)) {
         return false;
       }
     }

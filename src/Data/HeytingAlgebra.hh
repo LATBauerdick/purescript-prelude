@@ -35,7 +35,7 @@ namespace Data_HeytingAlgebra {
   // foreign import boolNot :: Boolean -> Boolean
   //
   inline auto boolNot(const any& b) -> any {
-    return not cast<bool>(b);
+    return not static_cast<bool>(b);
   }
 
 }

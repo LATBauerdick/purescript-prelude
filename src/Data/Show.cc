@@ -32,14 +32,14 @@ namespace Data_Show {
   }
 
   auto showStringImpl(const any& s) -> any {
-    return std::string("\"") + cast<cstring>(s) + '"';
+    return std::string("\"") + s + '"';
   }
 
   auto showArrayImpl(const any& f, const any::array& xs) -> any {
     std::string s("[");
     auto count = xs.size();
     for (auto it = xs.cbegin(), end = xs.cend(); it != end; it++) {
-      s.append(cast<cstring>(f(*it)));
+      s.append(static_cast<const string&>(f(*it)));
       if (--count > 0) {
         s.push_back(',');
       }
