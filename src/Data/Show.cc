@@ -19,6 +19,18 @@
 namespace Data_Show {
   using namespace PureScript;
 
+  //LatB: this is using std::to_string, removing trailing 0s.
+  //LATB: it should switch to exponentioal format for large Numbers
+  auto showNumberImpl(const any& f) -> any {
+    std::string str = std::to_string ((double)f);
+    int offset{1};
+    int ln0 = str.find_last_not_of('0');
+    if (ln0 == str.find('.')) {
+      str.erase(ln0+2, std::string::npos);
+    } else
+      str.erase(ln0 + offset, std::string::npos);
+    return str;
+  }
   auto showCharImpl(const char32_t c) -> any {
     std::string s("'");
     if (c < 128) {

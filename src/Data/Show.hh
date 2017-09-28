@@ -28,9 +28,10 @@ namespace Data_Show {
 
   // foreign import showNumberImpl :: Number -> String
   //
-  inline auto showNumberImpl(const any& x) -> any {
-    return std::to_string((double)x);
-  }
+  auto showNumberImpl(const any& f) -> any;
+  /* inline auto showNumberImpl(const any& x) -> any { */
+  /*   return std::to_string((double)x); */
+  /* } */
 
   // foreign import showCharImpl :: Char -> String
   //
